@@ -1,0 +1,24 @@
+#### Pushing an image to Docker Hub
+#########################################
+1. Build your image
+
+    docker build -t <give your image a name> .
+
+2. Authentication: Sign in to Docker Hub
+
+    docker login -u <dockerhub username>
+
+3. Tag the image for Docker Hub
+
+    IMAGE_TAG: => docker.io/[USERNAME]/[REPOSITORY]:[ VERSION_TAG ]
+
+    docker tag <image ID or name> docker.io/josiokoko/demoapp:v1
+    
+
+Retrieve your image ID
+    docker images
+    docker image ls
+
+4. Push the Docker image to Docker Hub
+
+    docker push docker.io/<dockerhub username>/demoapp:v1
