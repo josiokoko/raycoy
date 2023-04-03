@@ -1,9 +1,11 @@
 ## Manage data in Docker
-    - Containers are ephemeral, 
+    - Containers are ephemeral 
     - Data doesn’t persist when that container no longer exists
 
+
+
 ## Options for persisting data (store data on host machine)
-    (1) volumes
+    (1) volume
     (2) bind mounts
     (*) tmpfs mount (store data in the host’s system memory) - Not persisted
     
@@ -21,7 +23,10 @@
     - volumes are managed by Docker and are isolated from the core functionality of the host machine
 
     **Create a volume
+
         docker volume create <volume name>
+
+        docker volume create mydb
     
     **Remove volume
         docker volume prune

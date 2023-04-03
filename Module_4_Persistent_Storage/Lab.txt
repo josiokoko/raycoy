@@ -28,6 +28,11 @@ NOTE:
 ## Start a container with a volume 
 ######################
 
+Two approaches
+    -v (--volume) (older and concise)
+
+    --mount (newer but verbose)
+
 Task 1: using --mount flag
 
     - Format:
@@ -84,6 +89,9 @@ NOTE:
 
 # Task 2: Using -v (--volume) flag
     docker run -d -it --name devtest -v "$(pwd)"/target:/app nginx:latest
+
+    On Windows:
+        docker run -d -it --name devtest -v C:\Users\lucya\desktop\raycoy\storage:/app nginx:latest
 
 
     docker inspect devtest

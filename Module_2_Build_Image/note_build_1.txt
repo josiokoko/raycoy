@@ -72,11 +72,15 @@ By the end of this module, you will be able to:
     - Used to provide default command that will be executed when a container is created from the Docker image
     - Dockerfile can execute only one CMD directive
     - If there is more than one CMD directive, the last one is executed
+
+        python3 filename.py
+
     - format:
+        examples:
+            CMD ["echo", "Hello, world!"] => echo "Hello world"
 
-        CMD ["echo", "Hello, world!"]
-
-        CMD ["python3", "hello.py"]
+            CMD ["python3", "hello.py"] => python3 hello.py
+            CMD python hello.py
 
 
 ## RUN vs. CMD
@@ -88,7 +92,7 @@ By the end of this module, you will be able to:
 
 
 ## ENTRYPOINT Directive
-    - Used to provide default command that will be executed when a container is created from the Docker image
+    - Used to provide default command that will be executed atwhen a container is creed from the Docker image
     - Unlike CMD, you cannot override the ENTRYPOINT 
 
         ENTRYPOINT ["python3", "hello.py"]
@@ -107,6 +111,8 @@ By the end of this module, you will be able to:
         ARG USER=TestUser
         ARG VERSION=1.0.0
 
+        ARG MYBASEIMAGE=node
+
 
 ## ENV vs. ARG
     - ARG variables are not accessible from running container
@@ -114,12 +120,13 @@ By the end of this module, you will be able to:
 
     - ENV is available in both the Docker image layers and containers
 
-    ARG TAG=latest
+    ARG TAG=20.04
     FROM ubuntu:$TAG
-    LABEL maintaner=joseph123@gmail.com
+    LABEL maintainer=joseph123@gmail.com
     ENV ENVIRONMENT=development
     CMD ["env"]
 
+docker image build -t my-example1 .
 
 ## EXPOSE Directive
     - Used to inform Docker that the container is listening on the specified ports at runtime
@@ -212,6 +219,6 @@ Task 4:
             FROM httpd:latest
             COPY index.html /usr/local/apache2/htdocs/
     
-    docker image build -t demoapp:v1 .
+    docker image build -t apacheapp:v1 .
 
-    docker container run -d --name demoapp-container -p 8080:80 demoapp:v1
+    docker container run -d --name apacheapp-container -p 8080:80 apacheapp:v1
