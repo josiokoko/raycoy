@@ -34,11 +34,11 @@
 	
 	(3b) Create three (3) containers with the network you just created (--network):
 
-		docker run -dit --name alpine1 --network alpine-net alpine ash
+		docker run -dit --name alpine3 --network raycoy-net alpine ash
 
- 		docker run -dit --name alpine2 --network alpine-net alpine ash
+ 		docker run -dit --name alpine4 --network raycoy-net alpine ash
 
- 		docker run -dit --name alpine3 alpine ash
+
 
 
 
@@ -50,7 +50,7 @@
 
 	(4) Attach to the containers running in the background. 
 		
-		docker container attach alpine1
+		docker container attach alpine3
 
 
 	(5) From within alpine1, make sure you can connect to the internet by pinging google.com
@@ -58,26 +58,20 @@
 		ping -c 2 google.com
 
 
-	(6) Try to ping the second container by its IP address 172.17.0.3
+	(6) Try to ping alpine4 container by its IP address 172.19.0.3
 		
-		ping -c 2 172.17.0.3
-
-
-	(6b) Try to ping the third container by its IP address 172.17.0.3
-		
-		ping -c 2 172.17.0.4
+		ping -c 2 172.19.0.3
 
 
 
-	(7) Try to ping the alpine2 container by container name
+	(7) Try to ping the alpine4 container by container name
 
-		ping -c 2 alpine2
+		ping -c 2 alpine4
 
-		ping -c 2 alpine3
 
 
 
 	(8) Stop and remove containers
 
-		docker container stop alpine1 alpine2
-		docker container rm alpine1 alpine2
+		docker container stop alpine1 alpine2 alpine3 alpine4
+		docker container rm alpine1 alpine2 alpine3 alpine4

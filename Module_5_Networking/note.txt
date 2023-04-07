@@ -25,3 +25,8 @@ Why network in Docker?
 	(3) none:
 		- Disable all networking
 		- Usually used in conjunction with a custom network driver
+
+
+Task:
+	- Deploy a PostgreSQL database and pgadmin4 web interface
+	- Create data table in pgadmin and confirm access to it in PostgreSQL container

@@ -3,17 +3,12 @@
     - Data doesn’t persist when that container no longer exists
 
 
-
 ## Options for persisting data (store data on host machine)
     (1) volume
     (2) bind mounts
     (*) tmpfs mount (store data in the host’s system memory) - Not persisted
     
     (*) Volumes and bind mounts let you share files between the host machine and container so that you can persist data even after the container is stopped
-
-
-
-
 
 
 ## volumes 
@@ -32,9 +27,6 @@
         docker volume prune
 
     docker volume inspect --format '{{ .Mountpoint }}' <volume name>
-
-
-
 
 
 

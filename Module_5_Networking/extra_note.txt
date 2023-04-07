@@ -1,0 +1,23 @@
+
+apt update && apt install -y dnsutils
+
+DNS:
+	- Domain Name System
+	- Links names to IP addresses. 
+	- It works on the public internet and on private networks 
+
+How it works:
+	- When you point your browser to http://localhost:5050/ (pgadmin) 
+	- You’re using a domain name, which gets resolved to an IP address for one of the Docker servers 
+	- Your machine actually fetches content using the IP address,
+	- You, as the user, work with the domain name, which is much friendlier.
+
+Docker has its own DNS service built in: 
+- Apps running in containers make domain lookups when they try to access other components. 
+- DNS service in Docker performs that lookup
+	- If the domain name is actually a container name
+		Docker returns the container’s IP address
+
+	- If the domain name isn’t a container:
+		Docker passes the request on to the server where Docker is running, 
+		so it will make a standard DNS lookup to find an IP address on your organization’s network or the public internet.

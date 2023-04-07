@@ -4,14 +4,17 @@
 		
 		docker network ls
 	
+
+	
 	(2) Start two alpine containers running ash
 		
-		docker run -dit --name alpine1 alpine ash
+		docker container run -dit --name alpine1 alpine ash
 
-		docker run -dit --name alpine2 alpine ash
+		docker container run -dit --name alpine2 alpine ash
 
 		
 		docker container ls
+
 
 
 	(3) Inspect the bridge network to see what containers are connected to it
@@ -19,7 +22,7 @@
 		docker network inspect bridge
 
 		- Confirm the containers are connected to the same network
-		- Note the IPAddress of the containers
+		- Note the IPAddress of the containers => 172.17.0.3
 
 	(4) Attach to the containers running in the background. 
 		
@@ -29,9 +32,9 @@
 
 		ping -c 2 google.com
 
-	(6) Try to ping the second container by its IP address 172.17.0.3
+	(6) Try to ping the second container by its IP address 172.17.0.4
 		
-		ping -c 2 172.17.0.3
+		ping -c 2 172.17.0.4
 
 	(7) Try to ping the alpine2 container by container name
 

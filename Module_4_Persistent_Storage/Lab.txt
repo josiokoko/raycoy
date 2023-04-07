@@ -38,17 +38,25 @@ Task 1: using --mount flag
     - Format:
         --mount source=<volume name>,target=<mounted location in container>,readonly
 
+        --mount source=raycoy-new-vol,target=/raycoy
+
     docker run -d --name devtest --mount source=app-vol1,target=/app nginx:latest
+
+    docker container run -itd --name raycoy-test1 --mount source=raycoy-new-vol,target=/raycoy nginx:latest
 
 
 
 Task 2: using -v or --volume flag
     - Format:
         -v <volume name>:<mounted location in container>:ro
-           (optional)                                   (optional)   
+           (optional)                                   (optional) 
+
+        -v raycoy-new-vol:/raycoy   
 
     docker run -d --name prodtest -v app-vol2:/app nginx:latest
+    docker container run -itd --name raycoy-test2 -v raycoy-new-vol:/raycoy nginx:latest
 
+    docker container run -itd --name joseph-container -v raycoy-new-vol:/app-directory nginx:latest
 
 
 ## Stop and remove the volume (Volume removal is a separate step)
@@ -88,10 +96,19 @@ NOTE:
     
 
 # Task 2: Using -v (--volume) flag
-    docker run -d -it --name devtest -v "$(pwd)"/target:/app nginx:latest
+
+
+        docker container run -d -it --name voltest -v "$(pwd)":/app nginx:latest
+
+
 
     On Windows:
-        docker run -d -it --name devtest -v C:\Users\lucya\desktop\raycoy\storage:/app nginx:latest
+        docker container run -d -it --name voltest -v C:\Users\lucya\desktop\raycoy\storage:/app nginx:latest
+
+        docker container run -d -it --name devtest --mount type=bind,source=C:\Users\lucya\desktop\raycoy\storage,target=/app nginx:latest
+
+
+
 
 
     docker inspect devtest
@@ -99,3 +116,15 @@ NOTE:
 # Task 3: Use a read-only bind mount
     docker run -d -it --name devtest -v "$(pwd)"/target:/app:ro nginx:latest
     docker run -d -it --name devtest --mount type=bind,source="$(pwd)"/target,target=/app,readonly nginx:latest
+
+
+/usr/share/nginx/html/
+
+
+docker container run -d -it --name my-nginx-app -v C:\Users\lucya\desktop\raycoy\storage:/usr/share/nginx/html/ nginx
+
+docker container run -itd --name my-nginx-app -p 7775:80 -v C:\Users\lucya\desktop\raycoy\storage:/usr/share/nginx/html/ nginx
+
+
+
+
