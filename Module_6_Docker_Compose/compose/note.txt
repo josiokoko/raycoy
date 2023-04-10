@@ -1,0 +1,26 @@
+Docker compose
+	A tool for defining and running multi-container Docker applications 
+	Use a YAML file to configure your application’s services.
+
+
+
+Use Cases:
+	(1) Development environments
+		- document and configure all of the application’s service dependencies
+		- convenient way for developers to get started on a project
+	(2) Automated testing environments
+
+
+
+Compose Commands:
+	docker compose build
+	docker compose up --build -d 
+	docker compose up
+	docker compose up -d
+
+	docker compose ps
+
+	docker compose down
+
+	docker compose down --volumes
+	docker compose down -v

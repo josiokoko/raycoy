@@ -1,0 +1,5 @@
+Options to get my data out of a container
+
+(1) docker container exec 
+
+(2) docker cp <container id>:<location> <host directory>

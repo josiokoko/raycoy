@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@example.com 
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 5050:80
+    networks:
+      - pg-network
+
+  postgres-db:
+    image: postgres:12
+    container_name: postgres-db
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=raycoy
+    ports:
+      - 5532:5432
+    networks:
+      - pg-network
+      
+networks:
+  pg-network:

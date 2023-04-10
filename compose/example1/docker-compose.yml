@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  # docker container run -it --name my-nginx -p 8099:80 nginx
+  webserver:
+    image: nginx 
+    container_name: my-nginx-3
+    volumes:
+      - C:\Users\lucya\desktop\raycoy\compose:/usr/share/nginx/html/ # bind mount
+      - raycoy-new-volume:/usr/share/nginx/html/                     # volume - manage by docker host
+    ports:
+      - 8075:80
+    environment:
+      - CLASSS=001
+      - YEAR=2023
+    env_file:
+      - .env
+
+volumes:
+  raycoy-new-volume:
